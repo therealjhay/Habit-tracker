@@ -11,3 +11,56 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+body.light {
+  --bg-color: #fff;
+  --text-color: #222;
+  --card-bg: #fff;
+  --sidebar-bg: #f4f4f4;
+  --sidebar-text: #222;
+}
+
+body.dark {
+  --bg-color: #181818;
+  --text-color: #fafafa;
+  --card-bg: #222;
+  --sidebar-bg: #222;
+  --sidebar-text: #fff;
+}
+
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: background 0.3s, color 0.3s;
+}
+.sidebar {
+  background: var(--sidebar-bg);
+  color: var(--sidebar-text);
+}
+.habit-card {
+  background: var(--card-bg);
+  color: var(--text-color);
+  /* ...additional card styling... */
+}
+
+.theme-toggle-btn {
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  background: linear-gradient(90deg, #fad961 0%, #f76b1c 100%);
+  color: #222;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  transition: background 0.2s, color 0.2s, transform 0.16s;
+}
+
+.theme-toggle-btn:active {
+  transform: scale(0.95);
+}
+
+body.dark .theme-toggle-btn {
+  background: linear-gradient(90deg, #3a3a3a 0%, #2a5298 100%);
+  color: #fff;
+}

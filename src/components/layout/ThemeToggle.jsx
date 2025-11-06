@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 
 const ThemeToggle = () => {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark"); // default theme matches your screenshot
 
   const handleToggle = () => {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
-    document.body.className = newTheme; // Swaps theme on body
+    document.body.className = newTheme; // Switch class on <body>
   };
 
   return (
-    <button onClick={handleToggle}>
+    <button 
+      onClick={handleToggle} 
+      className="theme-toggle-btn"
+    >
       {theme === "light" ? "🌙 Dark Mode" : "☀️ Light Mode"}
     </button>
   );
