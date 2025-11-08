@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { Link } from "react-router-dom";
 import useHabit from "../hooks/useHabit";
 import HabitsList from "../components/habit/HabitsList";
@@ -16,6 +16,33 @@ const HabitsPage = () => {
         habit.category.toLowerCase().includes(filter.toLowerCase())
     );
   }, [habits, filter]);
+
+  useEffect(() => {
+    habits.forEach((habit) => {
+      if (
+        habit.reminderHour !== undefined &&
+        habit.reminderMinute !== undefined
+      ) {
+        scheduleReminder(habit.reminderHour, habit.reminderMinute, habit.name);
+      }
+    });
+  }, [habits]);
+
+  const scheduleReminder = (habitName, hour, minute) => {
+    const now = new Date();
+    const reminderTime = new Date();
+    reminderTime.setHours(hour, minute, 0, 0);
+    if (reminderTime < now) reminderTime.setDate(reminderTime.getDate() + 1);
+
+    const timeout = reminderTime - now;
+
+    setTimeout(() => {
+      if (Notification.permission === "granted") {
+        new Notification(`Reminder: ${habitName}`);
+      }
+      scheduleReminder(hour, minute, habitName);
+    }, timeout);
+  };
 
   return (
     <section
