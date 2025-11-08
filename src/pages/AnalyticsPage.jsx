@@ -1,3 +1,29 @@
 import React from "react";
-const AnalyticsPage = () => <section><h2>Analytics</h2><p>View your progress analytics here.</p></section>;
+import useHabit from "../hooks/useHabit";
+import "../styles/analytics.css";
+
+const AnalyticsPage = () => {
+  const { habits } = useHabit();
+
+  // Stats
+  const total = habits.length;
+  const completed = habits.filter(h => h.completed).length;
+  const active = total - completed;
+  const bestStreak = Math.max(0, ...habits.map(h => h.streak || 0));
+
+  return (
+    <section className="dashboard-panel">
+      <h2>Analytics</h2>
+      <div className="analytics-stats">
+        <div>Total Habits: <strong>{total}</strong></div>
+        <div>Active: <strong>{active}</strong></div>
+        <div>Completed: <strong>{completed}</strong></div>
+        <div>Best Streak: <strong>{bestStreak}</strong> days</div>
+      </div>
+      <p>View your progress analytics here.</p>
+      {/* Optionally, you can add a chart or more stats below */}
+    </section>
+  );
+};
+
 export default AnalyticsPage;
