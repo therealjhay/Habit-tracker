@@ -107,12 +107,6 @@ const HabitForm = ({ onSubmit, initialData = {} }) => {
           />
         </div>
 
-        <div className="form-actions">
-          <button type="submit" className="btn btn-primary">
-            {initialData.id ? "Update Habit" : "Save Habit"}
-          </button>
-        </div>
-
         <div className="form-group">
           <label htmlFor="reminderHour">Reminder Hour (0-23)</label>
           <Field type="number" name="reminderHour" min="0" max="23" />
@@ -131,6 +125,12 @@ const HabitForm = ({ onSubmit, initialData = {} }) => {
             component="div"
             className="error-message"
           />
+        </div>
+
+        <div className="form-actions">
+          <button type="submit" className="btn btn-primary">
+            {initialData.id ? "Update Habit" : "Save Habit"}
+          </button>
         </div>
       </Form>
     </Formik>

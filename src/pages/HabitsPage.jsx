@@ -39,8 +39,6 @@ const HabitsPage = () => {
     setTimeout(() => {
       if (Notification.permission === "granted") {
         new Notification(`Reminder: ${habitName}`);
-      } else {
-        alert(`Reminder: ${habitName}`);
       }
       scheduleReminder(hour, minute, habitName);
     }, timeout);
