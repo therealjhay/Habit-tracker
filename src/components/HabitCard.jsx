@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import ProgressBar from "./dashboard/ProgressBar"; // Adjust path if needed
+import ProgressBar from "./dashboard/ProgressBar";
+import "../styles/habits.css";
 
 const HabitCard = ({ habit }) => {
   const [completed, setCompleted] = useState(habit.completed || false);

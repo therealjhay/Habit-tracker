@@ -23,7 +23,7 @@ body.light {
 body.dark {
   --bg-color: #181818;
   --text-color: #fafafa;
-  --card-bg: #222;
+  --card-bg: #232323;
   --sidebar-bg: #222;
   --sidebar-text: #fff;
 }
@@ -33,14 +33,31 @@ body {
   color: var(--text-color);
   transition: background 0.3s, color 0.3s;
 }
+
 .sidebar {
   background: var(--sidebar-bg);
   color: var(--sidebar-text);
 }
-.habit-card {
+
+.habit-card,
+.card,
+.dashboard-panel,
+.dashboard-content,
+.table-container,
+.habit-list,
+.habit-table,
+.modal {
   background: var(--card-bg);
   color: var(--text-color);
-  /* ...additional card styling... */
+  transition: background 0.3s, color 0.3s;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+}
+
+body.dark .habit-table tr,
+body.dark .table tr {
+  background: var(--card-bg);
+  border-color: #444;
 }
 
 .theme-toggle-btn {

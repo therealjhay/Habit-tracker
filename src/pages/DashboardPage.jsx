@@ -11,7 +11,7 @@ const DashboardPage = () => {
     filter === "All" ? habits : habits.filter((h) => h.category === filter);
 
   return (
-    <section>
+    <section className="dashboard-panel">
       <h2>My Habits</h2>
 
       <div className="category-filter">

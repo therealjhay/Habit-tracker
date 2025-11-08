@@ -3,16 +3,54 @@
   gap: 1rem;
   flex-wrap: wrap;
 }
+
 .habit-card {
   background: var(--card-bg, #fff);
+  color: var(--text-color, #222);
   border-radius: 8px;
   padding: 1rem;
   width: 220px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+  transition: background 0.3s, color 0.3s;
 }
+body.dark .habit-card {
+  box-shadow: 0 2px 12px rgba(0,0,0,0.16);
+  border-color: #444;
+}
+
 .habit-card.completed {
   border: 2px solid #57d19c;
 }
+
+/* Main dashboard panel/area */
+.dashboard-panel,
+.dashboard-content,
+.table-container,
+.habit-list {
+  background: var(--card-bg, #fff);
+  color: var(--text-color, #222);
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+  transition: background 0.3s, color 0.3s;
+}
+
+.quote-box {
+  background: var(--card-bg, #fff); /* fixed for theme */
+  color: var(--text-color, #222);   /* fixed for theme */
+  margin-top: 2rem;
+  padding: 1rem;
+  font-style: italic;
+  border-radius: 8px;
+  text-align: center;
+  transition: background 0.3s, color 0.3s;
+}
+.quote-box::before {
+  content: "“";
+  font-size: 2rem;
+  vertical-align: top;
+  color: #ccc;
+}
+
 .progress-bar {
   background: #eee;
   border-radius: 8px;
@@ -24,20 +62,6 @@
   background: #57d19c;
   height: 100%;
   border-radius: 8px 0 0 8px;
-}
-.quote-box {
-  margin-top: 2rem;
-  padding: 1rem;
-  font-style: italic;
-  background: #f8f8f8;
-  border-radius: 8px;
-  text-align: center;
-}
-.quote-box::before {
-  content: "“";
-  font-size: 2rem;
-  vertical-align: top;
-  color: #ccc;
 }
 .habit-filter {
   margin-bottom: 1rem;
@@ -60,11 +84,9 @@
   gap: 0.5rem;
   overflow: scroll;
   margin: 1rem 4px;
-
   &::-webkit-scrollbar {
     display: none;
   }
-
   & {
     -ms-overflow-style: none;
     scrollbar-width: none;

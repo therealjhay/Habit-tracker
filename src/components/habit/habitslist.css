@@ -1,0 +1,88 @@
+.habit-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 1.5rem;
+}
+
+.habit-table {
+  width: 100%;
+  background: var(--card-bg, #fff);
+  color: var(--text-color, #222);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.habit-table th {
+  background: var(--card-bg, #fafbfc);
+  color: var(--text-color, #222);
+  padding: 12px 20px;
+  text-align: left;
+}
+
+.habit-table td {
+  background: var(--card-bg, #fff);
+  color: var(--text-color, #222);
+  padding: 16px 20px;
+}
+
+body.dark .habit-table th,
+body.dark .habit-table td {
+  background: var(--card-bg, #232323);
+  color: var(--text-color, #fafafa);
+}
+
+.habit-table tr {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.dots-btn {
+  background: none;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.actions-menu {
+  position: absolute;
+  top: 45px;
+  right: 10px;
+  background: var(--card-bg, #fff);
+  border: 1px solid #444;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  z-index: 10;
+  min-width: 120px;
+}
+
+body.dark .actions-menu {
+  background: var(--card-bg, #232323);
+}
+
+.actions-menu-link, .actions-menu-delete {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background: none;
+  border: none;
+  text-align: left;
+  text-decoration: none;
+  color: var(--text-color, #222);
+  cursor: pointer;
+}
+.actions-menu-delete {
+  color: #c00;
+}
+
+.no-habits-msg {
+  text-align: center;
+  margin-top: 1rem;
+  color: var(--text-color, #222);
+}
+body.dark .no-habits-msg {
+  color: var(--text-color, #fafafa);
+}

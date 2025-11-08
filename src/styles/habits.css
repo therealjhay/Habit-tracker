@@ -1,0 +1,95 @@
+.dashboard-panel {
+  background: var(--card-bg, #fff);
+  color: var(--text-color, #222);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  max-width: 1000px;
+  margin: 2rem auto;
+}
+
+.habits-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-habit-btn {
+  background: #007bff;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+body.dark .add-habit-btn {
+  background: #2a5298;
+  color: #fafafa;
+}
+
+.habit-filter-input {
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: var(--card-bg, #fff);
+  color: var(--text-color, #222);
+  transition: background 0.3s, color 0.3s;
+}
+body.dark .habit-filter-input {
+  background: var(--card-bg, #232323);
+  color: var(--text-color, #fafafa);
+  border: 1px solid #444;
+}
+
+.habit-card {
+  background: var(--card-bg, #fff);
+  color: var(--text-color, #222);
+  border-radius: 8px;
+  padding: 1rem;
+  width: 220px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+  transition: background 0.3s, color 0.3s;
+}
+body.dark .habit-card {
+  background: var(--card-bg, #232323);
+  color: var(--text-color, #fafafa);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.16);
+  border-color: #444;
+}
+
+.habit-card.completed {
+  border: 2px solid #57d19c;
+}
+
+.mark-btn,
+.done-btn {
+  padding: 0.6em 1.2em;
+  border: none;
+  border-radius: 999px;
+  margin-top: 1rem;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+.mark-btn {
+  background: #007bff;
+  color: #fff;
+}
+.done-btn {
+  background: #37d37c;
+  color: #fff;
+}
+body.dark .mark-btn {
+  background: #2a5298;
+  color: #fafafa;
+}
+body.dark .done-btn {
+  background: #57d19c;
+  color: #fafafa;
+}
