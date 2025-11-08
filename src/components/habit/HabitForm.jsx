@@ -2,6 +2,8 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import '../../styles/Habit.css'
+
 
 const HabitValidation = Yup.object().shape({
   name: Yup.string()
@@ -28,7 +30,6 @@ const HabitForm = ({ onSubmit, initialData = {} }) => {
     const storedHabits = JSON.parse(localStorage.getItem("habits")) || [];
 
     if (initialData.id) {
-      // ✅ UPDATE EXISTING HABIT
       const updatedHabits = storedHabits.map((habit) =>
         habit.id === initialData.id ? { ...habit, ...values } : habit
       );
@@ -36,9 +37,8 @@ const HabitForm = ({ onSubmit, initialData = {} }) => {
       localStorage.setItem("habits", JSON.stringify(updatedHabits));
 
       if (onSubmit) onSubmit(values);
-      navigate("/habits"); // optional navigation after save
+      navigate("/habits"); 
     } else {
-      // ✅ ADD NEW HABIT
       const newHabit = {
         id: Date.now(),
         ...values,
