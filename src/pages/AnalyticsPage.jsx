@@ -20,8 +20,6 @@ const AnalyticsPage = () => {
         <div>Completed: <strong>{completed}</strong></div>
         <div>Best Streak: <strong>{bestStreak}</strong> days</div>
       </div>
-      <p>View your progress analytics here.</p>
-      {/* Optionally, you can add a chart or more stats below */}
     </section>
   );
 };
