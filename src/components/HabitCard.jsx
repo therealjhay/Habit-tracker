@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ProgressBar from "./dashboard/ProgressBar"; // Adjust path if needed
 
 const HabitCard = ({ habit }) => {
@@ -7,6 +7,33 @@ const HabitCard = ({ habit }) => {
   const [lastCompletedDate, setLastCompletedDate] = useState(
     habit.lastCompletedDate || null
   );
+
+  const [timeLeft, setTimeLeft] = useState("");
+
+  useEffect(() => {
+    if (habit.reminderHour === undefined || habit.reminderMinute === undefined)
+      return;
+
+    const interval = setInterval(() => {
+      const now = new Date();
+      const reminderTime = new Date();
+
+      reminderTime.setHours(habit.reminderHour, habit.reminderMinute, 0, 0);
+
+      // If reminder already passed today, schedule for tomorrow
+      if (reminderTime < now) reminderTime.setDate(reminderTime.getDate() + 1);
+
+      const diff = reminderTime - now; // difference in ms
+
+      const hours = Math.floor(diff / 1000 / 60 / 60);
+      const minutes = Math.floor((diff / 1000 / 60) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      setTimeLeft(`${hours}h ${minutes}m ${seconds}s`);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [habit.reminderHour, habit.reminderMinute]);
 
   const today = new Date().toISOString().split("T")[0]; // "YYYY-MM-DD"
 
@@ -55,8 +82,14 @@ const HabitCard = ({ habit }) => {
       <h3>{habit.name}</h3>
       <p>Category: {habit.category}</p>
       <ProgressBar streak={streak} />
-      <p>🔥 Streak: {streak} { streak == 1? "day" : "days"}</p>
+      <p>
+        🔥 Streak: {streak} {streak == 1 ? "day" : "days"}
+      </p>
 
+      {habit.reminderHour !== undefined &&
+        habit.reminderMinute !== undefined && (
+          <p>⏰ Next Reminder in: {timeLeft}</p>
+        )}
       <button
         onClick={toggleCompletion}
         className={completed ? "done-btn" : "mark-btn"}

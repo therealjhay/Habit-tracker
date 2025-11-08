@@ -13,6 +13,14 @@ const HabitValidation = Yup.object().shape({
     .max(50, "Category must not be more than 50 characters")
     .required("Habit Category is required"),
   schedule: Yup.string().required("Schedule is required"),
+  reminderHour: Yup.number()
+    .min(0, "Hour must be 0-23")
+    .max(23, "Hour must be 0-23")
+    .required("Reminder Hour is required"),
+  reminderMinute: Yup.number()
+    .min(0, "Minute must be 0-59")
+    .max(59, "Minute must be 0-59")
+    .required("Reminder Minute is required"),
 });
 
 const HabitForm = ({ onSubmit, initialData = {} }) => {
@@ -22,6 +30,8 @@ const HabitForm = ({ onSubmit, initialData = {} }) => {
     name: initialData.name || "",
     category: initialData.category || "",
     schedule: initialData.schedule || "Daily",
+    reminderHour: initialData.reminderHour ?? 20,
+    reminderMinute: initialData.reminderMinute ?? 0,
   };
 
   const handleFormSubmit = (values, { resetForm }) => {
@@ -46,7 +56,10 @@ const HabitForm = ({ onSubmit, initialData = {} }) => {
         completed: false,
       };
 
-      localStorage.setItem("habits", JSON.stringify([...storedHabits, newHabit]));
+      localStorage.setItem(
+        "habits",
+        JSON.stringify([...storedHabits, newHabit])
+      );
 
       if (onSubmit) onSubmit(newHabit);
       resetForm();
@@ -71,7 +84,11 @@ const HabitForm = ({ onSubmit, initialData = {} }) => {
         <div className="form-group">
           <label htmlFor="category">Category</label>
           <Field type="text" name="category" placeholder="Enter Category" />
-          <ErrorMessage name="category" component="div" className="error-message" />
+          <ErrorMessage
+            name="category"
+            component="div"
+            className="error-message"
+          />
         </div>
 
         <div className="form-group">
@@ -83,13 +100,37 @@ const HabitForm = ({ onSubmit, initialData = {} }) => {
             <option value="Weekdays">Weekdays</option>
             <option value="Weekends">Weekends</option>
           </Field>
-          <ErrorMessage name="schedule" component="div" className="error-message" />
+          <ErrorMessage
+            name="schedule"
+            component="div"
+            className="error-message"
+          />
         </div>
 
         <div className="form-actions">
           <button type="submit" className="btn btn-primary">
             {initialData.id ? "Update Habit" : "Save Habit"}
           </button>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="reminderHour">Reminder Hour (0-23)</label>
+          <Field type="number" name="reminderHour" min="0" max="23" />
+          <ErrorMessage
+            name="reminderHour"
+            component="div"
+            className="error-message"
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="reminderMinute">Reminder Minute (0-59)</label>
+          <Field type="number" name="reminderMinute" min="0" max="59" />
+          <ErrorMessage
+            name="reminderMinute"
+            component="div"
+            className="error-message"
+          />
         </div>
       </Form>
     </Formik>
