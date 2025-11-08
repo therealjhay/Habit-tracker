@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const ThemeToggle = () => {
-  const [theme, setTheme] = useState("dark"); // default theme matches your screenshot
+  const [theme, setTheme] = useState("light"); // default theme matches your screenshot
 
   const handleToggle = () => {
     const newTheme = theme === "light" ? "dark" : "light";

@@ -1,0 +1,95 @@
+/* HabitForm.css */
+
+/* Container styling */
+.habit-form {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Form groups */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Labels */
+.form-group label {
+  font-weight: 600;
+  color: #333333;
+}
+
+/* Inputs & select fields */
+.form-group input,
+.form-group select {
+  padding: 0.6rem 0.5rem;
+  font-size: 0.95rem;
+  border: 1px solid #d1d5db; /* Tailwind gray-300 */
+  border-radius: 0.75rem;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #10b981; /* Tailwind green-500 */
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+/* Error messages */
+.error-message {
+  color: #ef4444; /* Tailwind red-500 */
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+/* Form actions */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Buttons */
+.btn {
+  padding: 0.7rem 1.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-primary {
+  background-color: #10b981; /* Tailwind green-500 */
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: #059669; /* Tailwind green-600 */
+  transform: translateY(-1px);
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .habit-form {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .form-actions {
+    justify-content: center;
+  }
+}

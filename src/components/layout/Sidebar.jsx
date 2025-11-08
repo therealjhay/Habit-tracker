@@ -7,7 +7,7 @@ const Sidebar = () => (
     <h2>Habit Tracker</h2>
     <nav>
       <ul>
-        <li><Link to="/">Dashboard</Link></li>
+        <li><Link to="/">Home</Link></li>
         <li><Link to="/habits">Habits</Link></li>
         <li><Link to="/analytics">Analytics</Link></li>
       </ul>

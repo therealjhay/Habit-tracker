@@ -26,7 +26,6 @@ const EditHabit = () => {
 
   return (
     <section className="edit-habit-page">
-        <h2>Edit Habit</h2>
         <HabitForm onSubmit={handleUpdateHabit} initialData={habitToEdit} />
     </section>
   )

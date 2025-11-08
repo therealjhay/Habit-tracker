@@ -8,6 +8,8 @@ import "./styles/dashboard.css";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+document.body.classList.add("light");
+
 root.render(
   <React.StrictMode>
     <App />

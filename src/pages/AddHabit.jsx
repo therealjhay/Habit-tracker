@@ -14,7 +14,6 @@ const AddHabit = () => {
     }
   return (
     <section className="add-habit-page">
-      <h2>Add a New Habit</h2>
       <HabitForm onSubmit={handleAddHabit} />
     </section>
   )
